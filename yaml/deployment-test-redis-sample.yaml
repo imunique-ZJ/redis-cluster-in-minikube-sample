@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-redis-deployment
+  namespace: zj
+  labels:
+    app: test-redis-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-redis-app
+  template:
+    metadata:
+      labels:
+        app: test-redis-app
+    spec:
+      containers:
+      - name: test-redis-app
+        image: localhost/redis-sample:0.0.1
+        imagePullPolicy: IfNotPresent

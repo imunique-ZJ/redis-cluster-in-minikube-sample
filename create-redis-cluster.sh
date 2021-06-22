@@ -1,0 +1,2 @@
+#!/bin/bash
+kubectl -n zj exec -it redis-app-0 -- redis-cli --cluster create --cluster-replicas 1 $(kubectl -n zj get pods -l app=redis-cluster-app -o jsonpath='{range.items[*]}{.status.podIP}:6379 {end}') --cluster-yes

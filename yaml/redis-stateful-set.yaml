@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis-app
+  namespace: zj
+spec:
+  selector:
+    matchLabels:
+      app: redis-cluster-app
+  serviceName: "redis-cluster-app"
+  replicas: 6
+  template:
+    metadata:
+      labels:
+        app: redis-cluster-app
+    spec:
+      containers:
+      - name: redis
+        image: "redis:6.2.4-alpine3.13"
+        command: ["/etc/redis/update-node.sh", "redis-server", "/etc/redis/redis.conf"]
+        ports:
+          - name: redis
+            containerPort: 6379
+            protocol: "TCP"
+          - name: cluster
+            containerPort: 16379
+            protocol: "TCP"
+        volumeMounts:
+          - name: "redis-conf"
+            mountPath: "/etc/redis"
+            readOnly: false
+          - name: "redis-data"
+            mountPath: "/var/lib/redis"
+            readOnly: false
+        env:
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+      volumes:
+      - name: "redis-conf"
+        configMap:
+          name: "redis-conf"
+          defaultMode: 0755
+          items:
+            - key: "redis.conf"
+              path: "redis.conf"
+            - key: "update-node.sh"
+              path: "update-node.sh"
+  volumeClaimTemplates:
+  - metadata:
+      name: redis-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "manual"
+      selector:
+        matchLabels:
+          owner: zj
+      resources:
+        requests:
+          storage: 1Gi

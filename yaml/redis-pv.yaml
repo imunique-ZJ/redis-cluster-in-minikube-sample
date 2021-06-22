@@ -1,0 +1,119 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv0
+  labels:
+    owner: zj
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp/redis-pv0"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv1
+  labels:
+    owner: zj
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp/redis-pv1"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv2
+  labels:
+    owner: zj
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp/redis-pv2"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv3
+  labels:
+    owner: zj
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp/redis-pv3"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv4
+  labels:
+    owner: zj
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp/redis-pv4"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv5
+  labels:
+    owner: zj
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp/redis-pv5"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv6
+  labels:
+    owner: zj
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp/redis-pv6"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv7
+  labels:
+    owner: zj
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp/redis-pv7"

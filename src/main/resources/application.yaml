@@ -1,0 +1,6 @@
+spring:
+  redis:
+    cluster:
+      nodes: "redis-service.zj.svc.cluster.local:6379"
+      timeout: 2000
+      max-redirects: 7
